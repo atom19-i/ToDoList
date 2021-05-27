@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import React , {useState} from 'react';
+import {v4 as uuid} from "uuid" ; //to generate unique random ID
+import List from "./component/List/List" ;
+import store from "./utils/store";
+import StoreApi from './utils/storeApi';
+import { makeStyles } from '@material-ui/core/styles' ;
+const useStyle = makeStyles(( theme) => ({
+  root: {
+    display:'flex',
+  },
+})) ;
 
-function App() {
+export default function App() {
+  const [data, setData] = useState(store);
+  const classes = useStyle();
+  const addMoreCard = (title, listId) => {
+    const newCardId = uuid() ;
+    const newCard = {
+      id: newCardId,
+      title,
+    } ;
+
+    const list = data.lists[listId] ;
+    list.cards = [...list.cards,newCard] //spread operator to get the prev data
+
+    const newState = { 
+      ...data,
+     lists:{
+       ...data.lists,
+       [listId]: list,
+     },
+    };
+    setData(newState);
+  } ;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <StoreApi.Provider value={{ addMoreCard }}>
+    <div className={classes.root}>
+    { data.listIds.map((listId) => {
+      const list = data.lists[listId] ;
+       return <List list={list} key={listId} />;
+    })}
     </div>
+    </StoreApi.Provider>
   );
 }
 
-export default App;
