@@ -30,7 +30,7 @@ export default function Card({ card }) {
     return (
         <div >
             <Paper className={classes.card}>{card.title}</Paper>
-            <ColorButton className={classes.buttonP} variant="outlined" size="small" color="#FFFF00">In-progress</ColorButton>
+            <ColorButton className={classes.buttonP} variant="outlined" size="small" color="#FFFF00">Button</ColorButton>
         </div>
     )
 }
