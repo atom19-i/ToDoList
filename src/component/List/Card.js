@@ -1,7 +1,8 @@
-import React from 'react';
-import {Button, Paper} from '@material-ui/core';
+import React , {useState} from 'react';
+import { Button, Paper} from '@material-ui/core';
 import { withStyles, makeStyles } from '@material-ui/core/styles' ;
-import { purple } from '@material-ui/core/colors'
+import { purple } from '@material-ui/core/colors';
+import data  from '../utils/store';
 
 const useStyle = makeStyles(( theme) => ({
     card:{
@@ -27,10 +28,31 @@ export default function Card({ card }) {
           },
         },
       }))(Button);
+
+
+    let oldList = data.lists ;
+    const [count,setCount] = useState(0);
+    const [list,setList] = useState(oldList) ;
+    const handleClick = () => {
+      if(count===1)
+      {
+        if(card.button==="in-progress")
+        {
+           var newCard = data.lists['list-2'].cards.push('card-8',`${card.title}`,"doing");
+           setList(list.cards => [...list.cards,newCard]);
+        }
+        if(card.button==="doing")
+        {
+           var nwCard = data.lists['list-3'].cards.push('card-14',`${card.title}`," ");
+           setList(list.cards => [...list.cards,nwCard]);
+        }
+     }
+    }
+     setCount(0) ;
     return (
         <div >
             <Paper className={classes.card}>{card.title}</Paper>
-            <ColorButton className={classes.buttonP} variant="outlined" size="small" color="#FFFF00">Button</ColorButton>
+            <ColorButton className={classes.buttonP} onClick={handleClick}variant="outlined" size="small" color="#FFFF00">{card.button}</ColorButton>
         </div>
     )
 }

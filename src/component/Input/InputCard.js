@@ -3,7 +3,7 @@ import {useContext} from 'react' ;
 import { Paper, InputBase, Button, IconButton } from '@material-ui/core' ;
 import ClearIcon from '@material-ui/icons/Clear';
 import { fade, makeStyles } from '@material-ui/core/styles' ;
-import storeApi from '../../utils/storeApi';
+import storeApi from "../utils/storeApi";
 
 const useStyle = makeStyles(( theme) => ({
   card:{

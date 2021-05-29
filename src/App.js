@@ -1,8 +1,8 @@
 import React , {useState} from 'react';
 import {v4 as uuid} from "uuid" ; //to generate unique random ID
 import List from "./component/List/List" ;
-import store from "./utils/store";
-import StoreApi from './utils/storeApi';
+import store from "./component/utils/store";
+import StoreApi from "./component/utils/storeApi" ;
 import { makeStyles } from '@material-ui/core/styles' ;
 const useStyle = makeStyles(( theme) => ({
   root: {

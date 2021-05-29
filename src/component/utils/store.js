@@ -3,14 +3,17 @@ const cards = [
     {
     id: 'card-1',
     title : 'Learning react.js props',
+    button: 'in-Progress',
     }, 
     {
         id: 'card-2',
         title : 'watching ucl final',
+        button: 'in-Progress',
     }, 
     {
         id: 'card-3',
         title: 'attending ukele class',
+        button: 'in-Progress',
     }, 
 
 ]
@@ -28,11 +31,13 @@ const data =  {
             cards: [
                 {
                 id: 'card-4',
-                title: 'meetup with friends'
+                title: 'meetup with friends',
+                button:'doing',
                 },
                 {
                     id: 'card-5',
                     title: 'grocery shopping',
+                    button: 'doing',
                 },
             ],
         },
@@ -42,7 +47,8 @@ const data =  {
             cards: [
                 {
                 id: 'card-6',
-                title: 'play fifa'
+                title: 'play fifa',
+                
                 },
                 {
                     id: 'card-7',
